@@ -1,8 +1,13 @@
 {
-  "name": "quasar-app",
-  "version": "0.0.1",
-  "description": "A Quasar App",
-  "author": "Your Name",
+  "name": "voxmedia",
+  "version": "0.3.1",
+  "description": "Sitio web de Vox media",
+  "author": "Javier Diaz Gaitan",
+  "license": "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/javodg/colegiosmexico.git"
+  },
   "scripts": {
     "clean": "node build/script.clean.js",
     "dev": "node build/script.dev.js",
@@ -12,12 +17,17 @@
   "dependencies": {
     "babel-runtime": "^6.0.0",
     "fastclick": "^1.0.6",
+    "firebase": "^3.7.0",
+    "marker-clusterer-plus": "^2.1.4",
     "material-design-icons": "^3.0.1",
     "moment": "^2.15.0",
+    "normalize.css": "^5.0.0",
     "quasar-framework": "^0.13.4",
     "roboto-fontface": "^0.7.0",
-    "vue": "^2.2.2",
+    "vue": "2.2.2",
+    "vue-template-compiler": "2.2.2",
     "vue-router": "^2.0.0",
+    "vue2-google-maps": "^0.6.4",
     "vuex": "^2.2.1"
   },
   "devDependencies": {
@@ -53,12 +63,12 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.1.1",
     "url-loader": "^0.5.7",
-    "vue-loader": "11.1.4",
+    "vue-loader": "^11.1.0",
     "vue-style-loader": "^2.0.0",
-    "vue-template-compiler": "^2.2.2",
+    "vue-template-compiler": "2.2.2",
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.17.0",
-    "webpack-merge": "^4.0.0"
+    "webpack-merge": "^3.0.0"
   }
 }

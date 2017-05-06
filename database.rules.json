@@ -1,0 +1,16 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "$escuelas": {
+      ".indexOn": [
+        "categoria/guarderia",
+        "categoria/kinder",
+        "categoria/primaria",
+        "categoria/secundaria",
+        "categoria/preparatoria",
+        "categoria/universidad"
+      ]
+    }
+  }
+}
