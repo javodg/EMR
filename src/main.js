@@ -10,8 +10,11 @@ import Vue from 'vue'
 import Quasar from 'quasar'
 import router from './router'
 import Firebase from 'firebase'
+import moment from 'moment'
 import Vuex from 'vuex'
 import 'normalize.css'
+
+moment.locale()
 
 // Inicio de coneccion con firebase
 const config = {
@@ -24,7 +27,17 @@ const config = {
 var appInit = Firebase.initializeApp(config, 'database')
 
 export const _root =  { // constantes sin reactividad
-  colorprincipal: 'orange',
+  hoy: moment(),
+  calcularEdad (fecha) {
+    var F = moment(fecha,'DDMMYYYY')
+    var diff = moment().diff(F)
+    var duracion = moment.duration(diff)
+    var edad
+    if(moment().diff(F,'years') <= 5) edad = duracion.years() + ' años ' + duracion.months() + ' meses'
+    else edad = duracion.years()
+    return edad
+  },
+  colorprincipal: 'blue',
   database: appInit.database(), // Inicio de database
   storage: appInit.storage(), // inicio de storage
   catEscuelas: [
@@ -80,30 +93,6 @@ const store = new Vuex.Store({
       _root.database.ref('escuela').orderByKey().equalTo(id).on('value', function (dataSnapshot) {
         // console.log(dataSnapshot.val())
         state.escuelas.escuelaactual = dataSnapshot.exportVal() // pasa los resultados de la busqueda al objeto para hacer el Render
-        // Ingresa los datos de latlng si existen, si no pasa strings vacias.
-        // vm.mark.position.lat = vm.escuela[vm.id].lat ? vm.escuela[vm.id].lat : ''
-        // vm.mark.position.lng = vm.escuela[vm.id].lng ? vm.escuela[vm.id].lng : ''
-        // Centra el mapa al marcador
-        // vm.center.lat = vm.mark.position.lat
-        // vm.center.lng = vm.mark.position.lng
-        // Inicio de arreglo para porblema social
-        // TODO falta arreglar las otras redes sociales, solo funciona facebook
-        /*
-        if (!vm.escuela[vm.id].social) {
-          console.log('falta social')
-          vm.escuela[vm.id][ 'social' ] = { facebook: '' }
-          console.log(vm.escuela.social)
-        }
-        */
-        /*
-        var arraytemp = ['estancia', 'kinder', 'primaria', 'secundaria', 'preparatoria', 'universidad']
-        for (var i = 0; i < arraytemp.length; i++) {
-          if (vm.escuela[vm.id].categoria[ '' + arraytemp[i] ] === undefined) {
-            console.log('falta ' + arraytemp[i])
-            vm.escuela[vm.id].categoria[ '' + arraytemp[i] ] = false
-          }
-        }
-        */
       })
     }
   }
@@ -132,6 +121,9 @@ Vue.use(VueGoogleMaps, {
 // Mis componenets
 import fichaescuela from 'components/fichaescuela'
 Vue.component('fichaescuela', fichaescuela)
+
+import paciente from 'components/paciente.vue'
+Vue.component('paciente', paciente)
 
 // FontAwesome icons
 // import Icon from 'vue-awesome/components/Icon.vue'

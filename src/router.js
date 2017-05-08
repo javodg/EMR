@@ -23,7 +23,7 @@ export default new VueRouter({
   routes: [
     { path: '/', component: load('Index') }, // Default
     { path: '/prueba', component: load('prueba') }, // Primera prueba de router
-    { path: '/escuelas/:id', component: load('escuelas'), props: true }, // Primera prueba de router
+    { path: '/pacientes', component: load('pacientes'), props: true }, // TODO generar lista de todos los pacientes
     { path: '/cursos', component: load('colors') },
     { path: '/editarescuela/:id', component: load('editarescuela') },
     { path: '/nuevaescuela', component: load('nuevaescuela') },

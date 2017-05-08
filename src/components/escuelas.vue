@@ -45,9 +45,7 @@
   </div>
 </template>
 <script>
-import {
-  _root
-} from '../main'
+import { _root } from '../main'
 export default {
   methods: {
     clicklog() {
